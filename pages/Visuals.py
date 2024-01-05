@@ -13,7 +13,7 @@ import seaborn as sns
 
 warnings.filterwarnings('ignore')
 
-asd = pd.read_csv("D:/College/Sem 5/ML/autism.csv")
+asd = pd.read_csv("Dataset/autism.csv")
 #print(asd.head())
 
 def autism_gender():
