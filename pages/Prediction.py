@@ -22,7 +22,7 @@ css_style1 = """
     background-color:rgba(0,0,0, 0.5);
     font-family: Arial, sans-serif;
     text-align: center; 
-    margin: 0 auto; /* Center the box horizontally */
+    margin: 0 auto;
     color: yellow;
 """
 
@@ -41,13 +41,13 @@ country_of_residence = st.number_input("Country of Residence", min_value=0)
 result = st.number_input("Result", min_value=0.0, format="%.2f")
 def map_yes_no(value):
     return 1 if value == "Yes" else 0
-with open("D:/College/Sem 5/ML/best_models.pkl", "rb") as model_file:
+with open("best_models.pkl", "rb") as model_file:
     models = pickle.load(model_file)
 model_names = ["None"] + list(models.keys())
 selected_model = st.selectbox("Select Model", model_names)
 
 if st.button("Predict"):
- 
+
     labels = [
          "Age", "Ethnicity",
         "Jaundice", "Autism in Family", "Country of Residence", "Result"
@@ -104,7 +104,7 @@ if st.button("Predict"):
     feature_names=["A1_Score", "A2_Score", "A3_Score", "A4_Score", "A5_Score",
         "A6_Score", "A7_Score", "A8_Score", "A9_Score", "A10_Score",
         "age", "ethnicity", "jaundice", "austim", "contry_of_res", "result"]
-    dataset = pd.read_csv("D:/College/Sem 5/ML/featured_autism.csv")
+    dataset = pd.read_csv("Dataset/featured_autism.csv")
     y = dataset["Class/ASD"]
     X = dataset.drop(columns=['gender',"Class/ASD",'used_app_before','age_desc','relation'])
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
