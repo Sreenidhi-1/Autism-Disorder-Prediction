@@ -13,7 +13,7 @@ from sklearn.metrics import roc_curve, auc,confusion_matrix
 import plotly.express as px
 from mlxtend.plotting import plot_confusion_matrix
 
-dataset = pd.read_csv("D:/College/Sem 5/ML/featured_autism.csv")
+dataset = pd.read_csv("Dataset/featured_autism.csv")
 
 
 def evaluate_model(model, X_test, y_test):
@@ -23,24 +23,22 @@ def evaluate_model(model, X_test, y_test):
     return accuracy, report
 
 
-
-
 st.write("<h1 style='text-align: center;color: #800080;'>Autism Detection Model Evaluation</h1>", unsafe_allow_html=True)
 
 
 y = dataset["Class/ASD"]
-X = dataset.drop(columns=['gender',"Class/ASD",'used_app_before','age_desc','relation'])  # Replace "target_column" with the actual column name
+X = dataset.drop(columns=['gender',"Class/ASD",'used_app_before','age_desc','relation']) 
 
 
 
-with open("D:/College/Sem 5/ML/best_models.pkl", "rb") as model_file:
+with open("best_models.pkl", "rb") as model_file:
     models = pickle.load(model_file)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
 st.sidebar.title("Select Model")
 
 selected_model = st.sidebar.selectbox("Select a model", list(models.keys()))
-image_path = "D:/College/Sem 5/ML/classification_report.png"
+image_path = "classification_report.jpeg"
 
 
 
