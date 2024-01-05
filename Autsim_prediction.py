@@ -79,7 +79,7 @@ st.markdown(html_content, unsafe_allow_html=True)
 
 
 
-dataset = pd.read_csv("D:\College\Sem 5\ML\cleaned_autism.csv")
+dataset = pd.read_csv("Dataset/cleaned_autism.csv")
 
 st.write("Dataset:")
 st.write(dataset)
